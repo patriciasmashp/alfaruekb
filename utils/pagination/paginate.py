@@ -1,8 +1,8 @@
 from loguru import logger
 from sqlalchemy import func, select
 from config import PAGES_SIZE
-from keyboards import ControllPaginateKeyBoard, NewPaginateKeyboard
-from utils import pagination
+from keyboards import ControllPaginateKeyBoard, PaginateKeyboard
+from utils.utils import pagination
 from aiogram.types import CallbackQuery, InlineKeyboardMarkup
 from callback_data import PaginateAct, PaginateCallback
 from sqlalchemy.ext.asyncio.session import AsyncSession
@@ -17,7 +17,7 @@ class Paginator():
             curent=None,
             custom_selection=None,
             num_entries=None,
-            keyboard: NewPaginateKeyboard = ControllPaginateKeyBoard) -> None:
+            keyboard: PaginateKeyboard = ControllPaginateKeyBoard) -> None:
         if curent:
             self.current = curent
         else:
