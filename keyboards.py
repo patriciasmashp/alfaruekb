@@ -88,15 +88,6 @@ class Keyboard():
         greet_kb = ReplyKeyboardMarkup(resize_keyboard=False, keyboard=kb)
         return greet_kb
 
-    def order_service():
-        inline_kb = [[
-            InlineKeyboardButton(text="Заказать услугу",
-                                 callback_data=f"order_service")
-        ]]
-
-        greet_kb = InlineKeyboardMarkup(inline_keyboard=inline_kb)
-        return greet_kb
-
     def send_phone():
         kb = [
             [
@@ -105,17 +96,6 @@ class Keyboard():
             ],
         ]
 
-        greet_kb = ReplyKeyboardMarkup(resize_keyboard=True, keyboard=kb)
-        return greet_kb
-
-    def faq_kb(faqs):
-
-        kb = []
-
-        for question in faqs:
-            kb.append([KeyboardButton(text=question.name)])
-
-        kb.append([KeyboardButton(text="Назад")])
         greet_kb = ReplyKeyboardMarkup(resize_keyboard=True, keyboard=kb)
         return greet_kb
 
@@ -140,92 +120,6 @@ class Keyboard():
         greet_kb = InlineKeyboardMarkup(inline_keyboard=inline_kb)
         return greet_kb
 
-    def admin_menu():
-        kb = [[
-            KeyboardButton(text="Опубликовать новость"),
-            KeyboardButton(text="Обратная связь")
-        ],
-              [
-                  KeyboardButton(text="Управление услугами"),
-                  KeyboardButton(text="Просмотр заказов"),
-              ],
-              [
-                  KeyboardButton(text="Блокировка пользователя"),
-                  KeyboardButton(text="Написать пользователю")
-              ],
-              [
-                  KeyboardButton(text="Вопросы FAQ"),
-                  KeyboardButton(text="Назад")
-              ]]
-
-        greet_kb = ReplyKeyboardMarkup(resize_keyboard=True, keyboard=kb)
-        return greet_kb
-
-    def services_controll():
-        inline_kb = [[
-            InlineKeyboardButton(text="Удалить", callback_data=f"delete"),
-            InlineKeyboardButton(text="Добавить фото",
-                                 callback_data=f"add_photos"),
-        ]]
-
-        greet_kb = InlineKeyboardMarkup(inline_keyboard=inline_kb)
-        return greet_kb
-
-    def news_is_ready():
-        inline_kb = [
-            [
-                InlineKeyboardButton(text="Опубликовать",
-                                     callback_data=f"publish")
-            ],
-            [InlineKeyboardButton(text="Отменить", callback_data=f"cancel")],
-        ]
-
-        greet_kb = InlineKeyboardMarkup(inline_keyboard=inline_kb)
-        return greet_kb
-
-    def orders_list(
-        orders,
-        page=1,
-        max_page=1,
-    ):
-        inline_kb = []
-
-        for order in orders:
-            # user = await se
-            inline_kb.append([
-                InlineKeyboardButton(text=order.user_obj.username,
-                                     callback_data=f"set_order={order.id}")
-            ])
-
-        if max_page != 1:
-            if page == max_page:
-                inline_kb.append([
-                    InlineKeyboardButton(text="←",
-                                         callback_data=f"orders_prev_page"),
-                    InlineKeyboardButton(text=f"{page}/{max_page}",
-                                         callback_data=f"_"),
-                ])
-            elif page == 1:
-                inline_kb.append([
-                    InlineKeyboardButton(text=f"{page}/{max_page}",
-                                         callback_data=f"_"),
-                    InlineKeyboardButton(text="→",
-                                         callback_data=f"orders_next_page"),
-                ])
-            else:
-                inline_kb.append([
-                    InlineKeyboardButton(text="←",
-                                         callback_data=f"orders_prev_page"),
-                    InlineKeyboardButton(text=f"{page}/{max_page}",
-                                         callback_data=f"_"),
-                    InlineKeyboardButton(text="→",
-                                         callback_data=f"orders_next_page"),
-                ], )
-        inline_kb.append(
-            [InlineKeyboardButton(text="Назад", callback_data=f"back")])
-        greet_kb = InlineKeyboardMarkup(inline_keyboard=inline_kb)
-        return greet_kb
-
     def back():
         inline_kb = [
             [InlineKeyboardButton(text="Назад", callback_data=f"back")],
@@ -234,19 +128,7 @@ class Keyboard():
         greet_kb = InlineKeyboardMarkup(inline_keyboard=inline_kb)
         return greet_kb
 
-    def categories_kb(categories):
-        kb = []
-
-        for category in categories:
-            kb.append([
-                InlineKeyboardButton(text=category.name,
-                                     callback_data=category.name)
-            ])
-
-        # kb.append([InlineKeyboardButton(text="Назад", callback_data="back")])
-        greet_kb = InlineKeyboardMarkup(inline_keyboard=kb)
-        return greet_kb
-
+   
     def categories_controll_kb(categories):
         kb = []
 
