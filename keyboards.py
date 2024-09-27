@@ -74,13 +74,8 @@ class Keyboard():
 
     def main_menu_kb(admin: bool = False):
         kb = [
-            [
-                KeyboardButton(text="Ассортимент")
-                
-            ],
-            [
-                KeyboardButton(text="Ассортимент ")
-            ],
+            [KeyboardButton(text="Ассортимент")],
+            [KeyboardButton(text="Ассортимент ")],
         ]
         if admin:
             kb.append([KeyboardButton(text="Админ панель")])
@@ -113,8 +108,8 @@ class Keyboard():
 
     def y_n_kb():
         inline_kb = [[
-            InlineKeyboardButton(text="Да", callback_data=f"y"),
-            InlineKeyboardButton(text="Нет", callback_data=f"n"),
+            InlineKeyboardButton(text="Да", callback_data="y"),
+            InlineKeyboardButton(text="Нет", callback_data="n"),
         ]]
 
         greet_kb = InlineKeyboardMarkup(inline_keyboard=inline_kb)
@@ -126,24 +121,6 @@ class Keyboard():
         ]
 
         greet_kb = InlineKeyboardMarkup(inline_keyboard=inline_kb)
-        return greet_kb
-
-   
-    def categories_controll_kb(categories):
-        kb = []
-
-        for category in categories:
-            kb.append([
-                InlineKeyboardButton(text=category.name,
-                                     callback_data=category.name)
-            ])
-
-        kb.append([
-            InlineKeyboardButton(text="Добавить категорию",
-                                 callback_data="add")
-        ])
-
-        greet_kb = InlineKeyboardMarkup(inline_keyboard=kb)
         return greet_kb
 
     def delete_button():

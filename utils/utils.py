@@ -28,6 +28,19 @@ async def get_user_by_username(username: str,
     return user
 
 
+async def get_user_by_id(tg_id, session: AsyncSession = None):
+    tg_id = str(id)
+    if session is None:
+        async with sessionmaker() as session:
+            q = await session.execute(select(User).where(User.tg_id == tg_id))
+            user = q.scalar_one_or_none()
+    else:
+        q = await session.execute(select(User).where(User.tg_id == tg_id))
+        user = q.scalar_one_or_none()
+
+    return user
+
+
 def register_routers():
     # Путь к папке с файлами
     routes_folder = 'routes'
